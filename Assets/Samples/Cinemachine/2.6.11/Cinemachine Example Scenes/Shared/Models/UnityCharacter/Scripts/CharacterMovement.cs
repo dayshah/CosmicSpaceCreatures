@@ -86,7 +86,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            // animator.Play("Jump");
+            anim.Play("Jump");
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
