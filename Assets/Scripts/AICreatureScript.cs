@@ -6,7 +6,7 @@ using UnityEngine;
 public class AICreatureScript : MonoBehaviour
 {
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
-    //private Animator anim;
+    private Animator anim;
     public GameObject[] route1;
     public GameObject[] route2;
 
@@ -19,40 +19,57 @@ public class AICreatureScript : MonoBehaviour
 
     private VelocityReporter velReporter;
 
+    private bool isTired;
+    public float restTime;
+    private float startRestTime;
+
     //public GameObject movingWaypoint;
     //public GameObject destinationTracker;
 
     public enum AIState
     {
         Route1,
-        Route2
+        Route2,
+        Hiding
     }
     public AIState aiState;
 
     // Start is called before the first frame update
     void Start()
     {
+        isTired = false;
+        restTime = 1.0f;
+        startRestTime = Time.unscaledTime;
+
         aiState = AIState.Route1;
 
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         //velReporter = movingWaypoint.GetComponent<VelocityReporter>();
 
         currWaypoint = 0;
 
-        InvokeRepeating("setNextWaypoint", 0.0f, 3f);
+        //InvokeRepeating("setNextWaypoint", 0.0f, 3f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (navMeshAgent.pathPending != true && navMeshAgent.remainingDistance == 0)
+        if (isTired && Time.unscaledTime >= startRestTime + restTime)
         {
+            isTired = false;
+            anim.SetFloat("vely", 1);
             setNextWaypoint();
         }
-        */
-        //anim.SetFloat("vely", navMeshAgent.velocity.magnitude / navMeshAgent.speed);
+
+        if (navMeshAgent.pathPending != true && navMeshAgent.remainingDistance < 1 && !isTired)
+        {
+            isTired = true;
+            anim.SetFloat("vely", 0);
+            startRestTime = Time.unscaledTime;
+        }
+        
+        
         //transform.Translate(navMeshAgent.velocity.magnitude / navMeshAgent.speed);
     }
 
