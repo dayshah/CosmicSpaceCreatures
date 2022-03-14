@@ -52,6 +52,9 @@ public class RootMotionControlScript : MonoBehaviour
 
     private int groundContactCount = 0;
 
+    public Vector3 jump;
+    public float jumpForce = 2.0f;
+
     public bool IsGrounded
     {
         get
@@ -104,6 +107,13 @@ public class RootMotionControlScript : MonoBehaviour
             // This makes certain that the action is handled!
             _inputActionFired = _inputActionFired || cinput.Action;
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && (IsGrounded || CharacterCommon.CheckGroundNear(this.transform.position, jumpableGroundNormalMaxAngle, 0.1f, 1f, out closeToJumpableGround)))
+        {
+            // animator.SetTrigger("jumping");
+            // animator.Play("Jump");
+            rbody.AddForce(jump * jumpForce, ForceMode.Impulse);
         }
     }
 

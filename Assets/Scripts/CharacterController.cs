@@ -2,16 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))] 
 public class CharacterController : MonoBehaviour
 {
 
     Animator animator;
     public bool wPressed = false;
+    public Vector3 jump;
+    public float jumpForce = 2.0f;
+
+    public bool isGrounded;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+        jump = new Vector3(0.0f, 2.0f, 0.0f);
+    }
+
+    void OnCollisionStay(){
+        isGrounded = true;
     }
 
     // Update is called once per frame
@@ -36,9 +48,13 @@ public class CharacterController : MonoBehaviour
             animator.SetBool("walking", false);
             animator.SetBool("running", false);
         }
-        if (Input.GetKeyUp("space"))
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             animator.SetTrigger("jumping");
+            animator.Play("Jump");
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
         }
     }
 }
