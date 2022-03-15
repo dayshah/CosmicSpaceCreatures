@@ -24,9 +24,9 @@ public class CharacterMovement : MonoBehaviour
     private float velocity;
 
     //test
-    public Vector3 jump;
-    public float jumpForce = 2.0f;
-    public bool isGrounded;
+    //public Vector3 jump;
+    //public float jumpForce = 2.0f;
+    //public bool isGrounded;
     Rigidbody rb;
 
 	// Use this for initialization
@@ -35,15 +35,20 @@ public class CharacterMovement : MonoBehaviour
 	    anim = GetComponent<Animator>();
 	    mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
-        jump = new Vector3(0.0f, 2.0f, 0.0f);
+        //jump = new Vector3(0.0f, 2.0f, 0.0f);
 	}
 
     void OnCollisionStay(){
-        isGrounded = true;
+        //isGrounded = true;
     }
 
-	// Update is called once per frame
-	void FixedUpdate ()
+    void OnCollisionExit()
+    {
+        //isGrounded = false;
+    }
+
+        // Update is called once per frame
+        void FixedUpdate ()
 	{
 	    input.x = Input.GetAxis("Horizontal");
 	    input.y = Input.GetAxis("Vertical");
@@ -84,12 +89,15 @@ public class CharacterMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(euler), turnSpeed * turnSpeedMultiplier * Time.deltaTime);
         }
 
+        /*
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            anim.Play("Jump");
-            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            //anim.Play("Jump");
+            rb.AddForce(jump * jumpForce * Time.deltaTime, ForceMode.Impulse);
+            Debug.Log("Jump force applied");
             isGrounded = false;
         }
+        */
 	}
 
     public virtual void UpdateTargetDirection()
