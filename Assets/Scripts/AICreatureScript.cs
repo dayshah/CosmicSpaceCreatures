@@ -38,7 +38,7 @@ public class AICreatureScript : MonoBehaviour
     void Start()
     {
         isTired = false;
-        restTime = 1.0f;
+        restTime = 2.0f;
         startRestTime = Time.unscaledTime;
 
         aiState = AIState.Route1;
@@ -62,7 +62,7 @@ public class AICreatureScript : MonoBehaviour
             setNextWaypoint();
         }
 
-        if (navMeshAgent.pathPending != true && navMeshAgent.remainingDistance < 1 && !isTired)
+        if (navMeshAgent.pathPending != true && navMeshAgent.remainingDistance < 5 && !isTired)
         {
             isTired = true;
             anim.SetFloat("vely", 0);
