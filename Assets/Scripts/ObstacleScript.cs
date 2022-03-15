@@ -15,27 +15,10 @@ public class ObstacleScript : MonoBehaviour
     void Update()
     {
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.attachedRigidbody != null)
-        {
-            BallCollector bc = other.attachedRigidbody.gameObject.GetComponent<BallCollector>();
-            if (bc != null)
-            {
-                animator.SetBool("BallCollectorHere", true);
-            }
-        }
+        
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.attachedRigidbody != null)
-        {
-            BallCollector bc = other.attachedRigidbody.gameObject.GetComponent<BallCollector>();
-            if (bc != null)
-            {
-                animator.SetBool("BallCollectorHere", false);
-            }
-        }
-    }
 }
