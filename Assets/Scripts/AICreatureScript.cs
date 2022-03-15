@@ -134,15 +134,23 @@ public class AICreatureScript : MonoBehaviour
         int whereTo = -1;
         float maxDist = -1;
  
-        if (nextWaypointDist < prevWaypointDist)
+        if (nextWaypointDist < 10)
         {
-            whereTo = prevWaypointIdx;
-            maxDist = prevWaypointDist;
+            if (nextWaypointDist < prevWaypointDist)
+            {
+                whereTo = prevWaypointIdx;
+                maxDist = prevWaypointDist;
+            }
+            else
+            {
+                whereTo = nextWaypointIdx;
+                maxDist = nextWaypointDist;
+            }
         } else
         {
             whereTo = nextWaypointIdx;
-            maxDist = nextWaypointDist;
         }
+        
 
         currWaypoint = whereTo;
 
