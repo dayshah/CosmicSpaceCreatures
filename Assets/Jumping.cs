@@ -7,54 +7,71 @@ public class Jumping : MonoBehaviour
     Rigidbody rb;
     Animator anim;
     public float jumpForce;
-    public bool canJump;
     public float leniencey;
     public bool isFalling;
+    private bool isJumpPressed;
+    private bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        jumpForce = 500.0f;
-        leniencey = 0.2f;
+        jumpForce = 5000.0f;
+        leniencey = 1f;
+    }
+
+    void OnCollisionEnter()
+    {
+        isGrounded = true;
+    }
+
+    void OnCollisionExit()
+    {
+        isGrounded = false;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            Debug.Log("jump pressed");
+            isJumpPressed = true;
+        }
     }
 
     void FixedUpdate()
     {
-        if (Input.GetKeyDown("space"))
+        if (isJumpPressed)
         {
-            Debug.Log("jump");
-            CheckIfCanJump();
-
-            if (canJump)
+            if (isGrounded || CheckIfCanJump())
             {
-                canJump = false;
+                Debug.Log("Can Jump");
                 Vector3 jump = new Vector3(0f, 1.0f, 0f);
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-                
+                isJumpPressed = false;
+            } else
+            {
+                Debug.Log("Cannot Jump");
             }
+            
+
         }
     }
 
-    public void CheckIfCanJump()
+    public bool CheckIfCanJump()
     {
         RaycastHit hit;
         Ray landingRay = new Ray(transform.position, Vector3.down);
-        Debug.DrawRay(transform.position, Vector3.down * leniencey);
+        //Debug.DrawRay(transform.position, Vector3.down * leniencey);
 
         if (Physics.Raycast(landingRay, out hit, leniencey))
         {
-            Debug.Log(hit.collider);
-            if (hit.collider == null)
-            {
-                canJump = false;
-            }
-            else
-            {
-                canJump = true;
-            }
+            return true;
+        } else {
+            return false;
         }
+
     }
     
 }
