@@ -149,6 +149,7 @@ public class AICreatureScript : MonoBehaviour
         } else
         {
             whereTo = nextWaypointIdx;
+            maxDist = nextWaypointDist;
         }
         
 
