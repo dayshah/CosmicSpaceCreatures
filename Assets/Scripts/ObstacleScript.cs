@@ -9,10 +9,11 @@ public class ObstacleScript : MonoBehaviour
     void Start()
     {
         animator = this.GetComponent<Animator>();
+        animator.SetBool("BallCollectorHere", true);
+
     }
     void Update()
     {
-
     }
     private void OnTriggerEnter(Collider other)
     {
