@@ -22,4 +22,10 @@ public class GameStarter : MonoBehaviour
         SceneManager.LoadScene("AlphaLevel");
         Time.timeScale = 1f;
     }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("EndGame");
+    }
+
 }
