@@ -15,7 +15,7 @@ public class CharacterController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         bool wBool = Input.GetKey("w");
         bool shiftBool = Input.GetKey("left shift");
