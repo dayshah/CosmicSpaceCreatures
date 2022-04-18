@@ -25,7 +25,7 @@ public class Jumping : MonoBehaviour
     {
         foreach (ContactPoint cp in c.contacts)
         {
-            if (cp.normal == Vector3.up)
+            if (Vector3.Dot(cp.normal, Vector3.up) > 0.5)
             {
                 isGrounded = true;
                 break;
@@ -43,28 +43,25 @@ public class Jumping : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            Debug.Log("jump pressed");
-            isJumpPressed = true;
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (isJumpPressed)
-        {
             if (isGrounded || CheckIfCanJump())
             {
                 Debug.Log("Can Jump");
                 Vector3 jump = new Vector3(0f, 1.0f, 0f);
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
                 isJumpPressed = false;
-            } else
+            }
+            else
             {
                 Debug.Log("Cannot Jump");
             }
-            
+
 
         }
+    }
+
+    void FixedUpdate()
+    {
+        
     }
 
     public bool CheckIfCanJump()
