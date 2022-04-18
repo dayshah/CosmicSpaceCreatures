@@ -2010,6 +2010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasBall: 0
   hit: 0
+  balls: 0
 --- !u!114 &708548743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,7 +2035,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708548739}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 82cfb4f3e82fb1b4faf55454fe106618, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.31
@@ -6027,7 +6028,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819508538}
-  m_LocalRotation: {x: -0.02310108, y: 0.9588382, z: -0.08175093, w: -0.2709473}
+  m_LocalRotation: {x: -0.023101076, y: 0.9588382, z: -0.08175093, w: -0.2709473}
   m_LocalPosition: {x: 446.6707, y: 29.4, z: 166.8685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6844,7 +6845,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142051819}
-  m_LocalRotation: {x: -0.0181819, y: 0.9601635, z: -0.06434276, w: -0.27132183}
+  m_LocalRotation: {x: -0.0181819, y: 0.9601635, z: -0.06434275, w: -0.27132183}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

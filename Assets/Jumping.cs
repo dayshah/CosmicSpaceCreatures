@@ -21,12 +21,20 @@ public class Jumping : MonoBehaviour
         leniencey = 1f;
     }
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision c)
     {
-        isGrounded = true;
+        foreach (ContactPoint cp in c.contacts)
+        {
+            if (cp.normal == Vector3.up)
+            {
+                isGrounded = true;
+                break;
+            }
+        }
+        
     }
 
-    void OnCollisionExit()
+    void OnCollisionExit(Collision c)
     {
         isGrounded = false;
     }
