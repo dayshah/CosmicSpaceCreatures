@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Animator))]
 
@@ -10,6 +11,8 @@ public class ThrowScript : MonoBehaviour
     public Rigidbody ballPrefab;
     private Animator anim;
     private Rigidbody currBall;
+    public int creaturesCaptured;
+    public Rigidbody player;
 
     void Awake()
     {
@@ -28,7 +31,7 @@ public class ThrowScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        creaturesCaptured = 0;
     }
 
     // Update is called once per frame
@@ -36,19 +39,25 @@ public class ThrowScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Throw Ball");
-            anim.SetBool("Throw", true);
+            //Debug.Log("Throw Ball");
+            //anim.SetBool("Throw", true);
             ThrowBall();
         } else
         {
             //anim.SetBool("Throw", false);
         }
+
+        if (creaturesCaptured == 2)
+        {
+            SceneManager.LoadScene("EndGame");
+        }
     }
 
     private void ThrowBall()
     {
-        Debug.Log(handHold);
+        //Debug.Log(handHold);
         currBall = Instantiate<Rigidbody>(ballPrefab, handHold);
+        
         currBall.transform.localPosition = Vector3.zero;
         currBall.isKinematic = true;
         currBall.transform.parent = null;
@@ -57,5 +66,13 @@ public class ThrowScript : MonoBehaviour
         currBall.angularVelocity = Vector3.zero;
         currBall.AddForce(100 * this.transform.forward, ForceMode.Impulse);
         currBall = null;
+    }
+
+    
+
+    public void CaptureCreature()
+    { 
+        creaturesCaptured++;
+        //Debug.Log("CREATURE CAPTURED: " + creaturesCaptured);
     }
 }
