@@ -8,7 +8,6 @@ public class Jumping : MonoBehaviour
     Animator anim;
     public float jumpForce;
     public float leniencey;
-    public bool isFalling;
     private bool isJumpPressed;
     private bool isGrounded;
 
@@ -17,7 +16,7 @@ public class Jumping : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        jumpForce = 5000.0f;
+        jumpForce = 500.0f;
         leniencey = 1f;
     }
 
@@ -36,7 +35,11 @@ public class Jumping : MonoBehaviour
 
     void OnCollisionExit(Collision c)
     {
-        isGrounded = false;
+        if (!(c.gameObject.layer == 9))
+        {
+            isGrounded = false;
+        }
+        
     }
 
     void Update()
