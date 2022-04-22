@@ -40,6 +40,7 @@ public class ChaserAIScript : MonoBehaviour
 
 		} else if (playerDistance < 50)
         {
+			speed = 1000.0f;
 			// Run Animation
 			RunAni();
 
@@ -51,13 +52,15 @@ public class ChaserAIScript : MonoBehaviour
 
 			// Mushroom runs at player
 			Vector3 rb_vel = this.transform.forward * speed * Time.deltaTime;
-			rb_vel.y = rb.velocity.y - 0.1f;
+			rb_vel.y = 0;
 			rb.velocity = rb_vel;
 
 		} else
         {
 			IdleAni();
-        }
+			speed = 0;
+			rb.velocity = new Vector3(0, 0, 0);
+		}
 	}
 
 	private void JumpNoise()
