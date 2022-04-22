@@ -12,6 +12,8 @@ public class ChaserAIScript : MonoBehaviour
 	private float velX;
 	private float velZ;
 	private float speed;
+	private AudioSource jumpSound;
+	private AudioSource wackSound;
 
 	void Start()
 	{
@@ -19,6 +21,9 @@ public class ChaserAIScript : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		player_rb = player.GetComponent<Rigidbody>();
 		speed = 750.0f;
+		AudioSource[] sounds = GetComponents<AudioSource>();
+		jumpSound = sounds[0];
+		wackSound = sounds[1];
 	}
 
 	// Update is called once per frame
@@ -55,6 +60,11 @@ public class ChaserAIScript : MonoBehaviour
         }
 	}
 
+	private void JumpNoise()
+	{
+		jumpSound.Play();
+	}
+
 	public void IdleAni()
 	{
 		anim.CrossFade("Idle");
@@ -84,6 +94,7 @@ public class ChaserAIScript : MonoBehaviour
     {
 		if (Vector3.Magnitude(this.transform.position - player.transform.position) < 15)
         {
+			wackSound.Play();
 			Vector3 forceDir = (player.transform.position - this.transform.position).normalized;
 			player_rb.AddForce(new Vector3(forceDir.x * 1000, 0, forceDir.z * 1000), ForceMode.VelocityChange);
 			//player.transform.Translate(forceDir * 100);
