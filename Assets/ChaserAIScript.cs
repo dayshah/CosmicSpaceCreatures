@@ -18,7 +18,7 @@ public class ChaserAIScript : MonoBehaviour
 		anim = GetComponent<Animation>();
 		rb = GetComponent<Rigidbody>();
 		player_rb = player.GetComponent<Rigidbody>();
-		speed = 10.0f;
+		speed = 750.0f;
 	}
 
 	// Update is called once per frame
@@ -45,7 +45,7 @@ public class ChaserAIScript : MonoBehaviour
 			this.transform.rotation = Quaternion.Euler(eulerAngles);
 
 			// Mushroom runs at player
-			Vector3 rb_vel = this.transform.forward * 500 * Time.deltaTime;
+			Vector3 rb_vel = this.transform.forward * speed * Time.deltaTime;
 			rb_vel.y = rb.velocity.y - 0.1f;
 			rb.velocity = rb_vel;
 
