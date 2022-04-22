@@ -32,6 +32,7 @@ public class CharacterMovement : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+        
 	    anim = GetComponent<Animator>();
 	    mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();

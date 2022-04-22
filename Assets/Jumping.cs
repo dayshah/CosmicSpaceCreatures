@@ -10,14 +10,36 @@ public class Jumping : MonoBehaviour
     public float leniencey;
     private bool isJumpPressed;
     private bool isGrounded;
+    private AudioSource leftFootSound;
+    private AudioSource rightFootSound;
 
     // Start is called before the first frame update
     void Start()
     {
+        AudioSource[] steps = GetComponents<AudioSource>();
+        leftFootSound = steps[0];
+        rightFootSound = steps[1];
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         jumpForce = 500.0f;
-        leniencey = 1f;
+        leniencey = 2f;
+    }
+
+    private void LeftFootNoise()
+    {
+        if (isGrounded || CheckIfCanJump())
+        {
+            leftFootSound.Play();
+        }
+        
+    }
+
+    private void RightFootNoise()
+    {
+        if (isGrounded || CheckIfCanJump())
+        {
+            rightFootSound.Play();
+        }
     }
 
     void OnCollisionEnter(Collision c)
