@@ -14,6 +14,7 @@ public class ChaserAIScript : MonoBehaviour
 	private float speed;
 	private AudioSource jumpSound;
 	private AudioSource wackSound;
+	private bool touchingWall;
 
 	void Start()
 	{
@@ -42,24 +43,47 @@ public class ChaserAIScript : MonoBehaviour
         {
 			speed = 1000.0f;
 			// Run Animation
-			RunAni();
-
+			if (!touchingWall)
+			{
+				RunAni();
+				// Mushroom runs at player
+				Vector3 rb_vel = this.transform.forward * speed * Time.deltaTime;
+				rb_vel.y = 0;
+				rb.velocity = rb_vel;
+			} else
+            {
+				IdleAni();
+            }
+			
 			// Mushroom turns to look at player
 			this.transform.LookAt(player.transform);
 			Vector3 eulerAngles = this.transform.rotation.eulerAngles;
 			eulerAngles = new Vector3(0, eulerAngles.y, 0);
 			this.transform.rotation = Quaternion.Euler(eulerAngles);
 
-			// Mushroom runs at player
-			Vector3 rb_vel = this.transform.forward * speed * Time.deltaTime;
-			rb_vel.y = 0;
-			rb.velocity = rb_vel;
+			
 
 		} else
         {
 			IdleAni();
 			speed = 0;
 			rb.velocity = new Vector3(0, 0, 0);
+		}
+	}
+
+    private void OnCollisionEnter(Collision c)
+    {
+        if (c.gameObject.layer == 10)
+        {
+			touchingWall = true;
+        }
+    }
+
+	private void OnCollisionExit(Collision c)
+	{
+		if (c.gameObject.layer == 10)
+		{
+			touchingWall = false;
 		}
 	}
 
@@ -99,7 +123,7 @@ public class ChaserAIScript : MonoBehaviour
         {
 			wackSound.Play();
 			Vector3 forceDir = (player.transform.position - this.transform.position).normalized;
-			player_rb.AddForce(new Vector3(forceDir.x * 1000, 0, forceDir.z * 1000), ForceMode.VelocityChange);
+			player_rb.AddForce(new Vector3(forceDir.x * 5000, 0, forceDir.z * 5000), ForceMode.VelocityChange);
 			//player.transform.Translate(forceDir * 100);
 			//player_rb.AddForce(forceVec, ForceMode.Impulse);
         }
