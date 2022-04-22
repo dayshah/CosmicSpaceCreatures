@@ -26,7 +26,7 @@ public class ChaserAIScript : MonoBehaviour
 	{
 		Vector3 playerDisplacement = this.transform.position - player.transform.position;
 		float playerDistance = Vector3.Magnitude(playerDisplacement);
-		Debug.Log(playerDistance);
+		//Debug.Log(playerDistance);
 
 		if (playerDistance < 15)
 		{

@@ -66,8 +66,9 @@ public class Jumping : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKey(KeyCode.Space))
         {
+            Debug.Log("Trying to jump");
             if (isGrounded || CheckIfCanJump())
             {
                 Debug.Log("Can Jump");
