@@ -8,6 +8,7 @@ public class Jumping : MonoBehaviour
     Animator anim;
     public float jumpForce;
     public float leniencey;
+    public float footLeniencey;
     private bool isJumpPressed;
     private bool isGrounded;
     private AudioSource leftFootSound;
@@ -22,7 +23,8 @@ public class Jumping : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         jumpForce = 100.0f;
-        leniencey = 2f;
+        leniencey = 1f;
+        footLeniencey = 2f;
     }
 
     private void LeftFootNoise()
@@ -104,5 +106,22 @@ public class Jumping : MonoBehaviour
         }
 
     }
-    
+
+    public bool CheckIfFootstep()
+    {
+        RaycastHit hit;
+        Ray landingRay = new Ray(transform.position, Vector3.down);
+        //Debug.DrawRay(transform.position, Vector3.down * leniencey);
+
+        if (Physics.Raycast(landingRay, out hit, footLeniencey))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
 }
