@@ -22,14 +22,14 @@ public class Jumping : MonoBehaviour
         rightFootSound = steps[1];
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        jumpForce = 100.0f;
+        jumpForce = 200.0f;
         leniencey = 1f;
         footLeniencey = 2f;
     }
 
     private void LeftFootNoise()
     {
-        if (isGrounded || CheckIfCanJump())
+        if (isGrounded || CheckIfFootstep())
         {
             leftFootSound.Play();
         }
@@ -38,7 +38,7 @@ public class Jumping : MonoBehaviour
 
     private void RightFootNoise()
     {
-        if (isGrounded || CheckIfCanJump())
+        if (isGrounded || CheckIfFootstep())
         {
             rightFootSound.Play();
         }
