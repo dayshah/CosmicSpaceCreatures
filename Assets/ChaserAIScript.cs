@@ -85,7 +85,7 @@ public class ChaserAIScript : MonoBehaviour
 		if (Vector3.Magnitude(this.transform.position - player.transform.position) < 15)
         {
 			Vector3 forceDir = (player.transform.position - this.transform.position).normalized;
-			player_rb.AddForce(new Vector3(forceDir.x * 5000, 0, forceDir.z * 5000), ForceMode.VelocityChange);
+			player_rb.AddForce(new Vector3(forceDir.x * 1000, 0, forceDir.z * 1000), ForceMode.VelocityChange);
 			//player.transform.Translate(forceDir * 100);
 			//player_rb.AddForce(forceVec, ForceMode.Impulse);
         }

@@ -21,7 +21,7 @@ public class Jumping : MonoBehaviour
         rightFootSound = steps[1];
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        jumpForce = 500.0f;
+        jumpForce = 100.0f;
         leniencey = 2f;
     }
 
