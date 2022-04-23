@@ -39,12 +39,11 @@ public class ThrowScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //Debug.Log("Throw Ball");
-            //anim.SetBool("Throw", true);
-            ThrowBall();
+            anim.SetBool("Throw", true);
+            // ThrowBall();
         } else
         {
-            //anim.SetBool("Throw", false);
+            // anim.SetBool("Throw", false);
         }
 
         if (creaturesCaptured == 2)
