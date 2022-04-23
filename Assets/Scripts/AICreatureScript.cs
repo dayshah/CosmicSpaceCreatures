@@ -23,6 +23,8 @@ public class AICreatureScript : MonoBehaviour
     public float restTime;
     private float startRestTime;
 
+    private AudioSource jumpSound;
+
     //public GameObject movingWaypoint;
     //public GameObject destinationTracker;
 
@@ -45,6 +47,8 @@ public class AICreatureScript : MonoBehaviour
 
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
+        jumpSound = GetComponent<AudioSource>();
+
         //velReporter = movingWaypoint.GetComponent<VelocityReporter>();
 
         currWaypoint = 0;
@@ -83,6 +87,11 @@ public class AICreatureScript : MonoBehaviour
         {
             makeDecision(route2, route2JunctionIndex);
         }
+    }
+
+    private void JumpNoise()
+    {
+        jumpSound.Play();
     }
 
     private void makeDecision(GameObject[] currRoute, int currRouteJunctionIdx)
