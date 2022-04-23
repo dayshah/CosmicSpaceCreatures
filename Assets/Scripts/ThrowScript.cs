@@ -40,10 +40,12 @@ public class ThrowScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             anim.SetBool("Throw", true);
-            // ThrowBall();
         } else
         {
-            // anim.SetBool("Throw", false);
+            if (this.anim.GetCurrentAnimatorStateInfo(1).IsName("Throwing"))
+            {
+                anim.SetBool("Throw", false);
+            }
         }
 
         if (creaturesCaptured == 2)
@@ -63,7 +65,10 @@ public class ThrowScript : MonoBehaviour
         currBall.isKinematic = false;
         currBall.velocity = Vector3.zero;
         currBall.angularVelocity = Vector3.zero;
-        currBall.AddForce(100 * this.transform.forward, ForceMode.Impulse);
+
+        Vector3 forceDir = this.transform.forward;
+        forceDir.y = 0.8f;
+        currBall.AddForce(50 * forceDir, ForceMode.Impulse);
         currBall = null;
     }
 
