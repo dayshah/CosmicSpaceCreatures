@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameStarter : MonoBehaviour
 {
+
+    [SerializeReference]
+    private GameObject htpPanel;
+    [SerializeReference]
+    private GameObject startPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +24,28 @@ public class GameStarter : MonoBehaviour
 
     public void StartGame()
     {
+        SceneManager.LoadScene("Prologue");
+        Time.timeScale = 1f;
+    }
+
+    public void RestartLevel()
+    {
         SceneManager.LoadScene("AlphaLevel");
         Time.timeScale = 1f;
+    }
+
+    public void ControlToggle()
+    {
+        if (htpPanel.activeSelf)
+        {
+            startPanel.SetActive(true);
+            htpPanel.SetActive(false);
+        }
+        else
+        {
+            startPanel.SetActive(false);
+            htpPanel.SetActive(true);
+        }
     }
 
     public void EndGame()
