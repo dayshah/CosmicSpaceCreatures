@@ -67,6 +67,11 @@ public class ThrowScript : MonoBehaviour
         currBall = null;
     }
 
+    public void setFalse() 
+    {
+        anim.SetBool("Throw", false);
+    }
+
     
 
     public void CaptureCreature()
