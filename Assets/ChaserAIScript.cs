@@ -14,6 +14,7 @@ public class ChaserAIScript : MonoBehaviour
 	private float speed;
 	private AudioSource jumpSound;
 	private AudioSource wackSound;
+	private AudioSource missSound;
 	private bool touchingWall;
 
 	void Start()
@@ -25,6 +26,7 @@ public class ChaserAIScript : MonoBehaviour
 		AudioSource[] sounds = GetComponents<AudioSource>();
 		jumpSound = sounds[0];
 		wackSound = sounds[1];
+		missSound = sounds[2];
 	}
 
 	// Update is called once per frame
@@ -126,6 +128,9 @@ public class ChaserAIScript : MonoBehaviour
 			player_rb.AddForce(new Vector3(forceDir.x * 5000, 0, forceDir.z * 5000), ForceMode.VelocityChange);
 			//player.transform.Translate(forceDir * 100);
 			//player_rb.AddForce(forceVec, ForceMode.Impulse);
+        } else
+        {
+			missSound.Play();
         }
     }
    
