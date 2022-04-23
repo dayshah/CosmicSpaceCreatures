@@ -13,6 +13,8 @@ public class ThrowScript : MonoBehaviour
     private Rigidbody currBall;
     public int creaturesCaptured;
     public Rigidbody player;
+    private AudioSource throwSound;
+    private AudioSource caughtSound;
 
     void Awake()
     {
@@ -26,6 +28,10 @@ public class ThrowScript : MonoBehaviour
         {
             throw new System.Exception("ball prefab is null");
         }
+
+        AudioSource[] sounds = GetComponents<AudioSource>();
+        throwSound = sounds[3];
+        caughtSound = sounds[2];
     }
 
     // Start is called before the first frame update
@@ -57,6 +63,8 @@ public class ThrowScript : MonoBehaviour
     private void ThrowBall()
     {
         //Debug.Log(handHold);
+        throwSound.Play();
+
         currBall = Instantiate<Rigidbody>(ballPrefab, handHold);
         
         currBall.transform.localPosition = Vector3.zero;
@@ -80,7 +88,8 @@ public class ThrowScript : MonoBehaviour
     
 
     public void CaptureCreature()
-    { 
+    {
+        caughtSound.Play();
         creaturesCaptured++;
         //Debug.Log("CREATURE CAPTURED: " + creaturesCaptured);
     }
