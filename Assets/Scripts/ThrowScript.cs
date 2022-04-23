@@ -24,7 +24,7 @@ public class ThrowScript : MonoBehaviour
 
         if (ballPrefab == null)
         {
-            throw new System.Exception();
+            throw new System.Exception("ball prefab is null");
         }
     }
 
