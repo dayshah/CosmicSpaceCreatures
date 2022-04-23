@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: ef36727edb65c0a4f9fe02028b840560
   - enabled: 1
-    path: Assets/Scenes/AlphaLevel.unity
+    path: Assets/Scenes/MainLevel.unity
     guid: a21dfec0f752a6f448dd7bf75fdd7166
   - enabled: 1
     path: Assets/Scenes/EndGame.unity
