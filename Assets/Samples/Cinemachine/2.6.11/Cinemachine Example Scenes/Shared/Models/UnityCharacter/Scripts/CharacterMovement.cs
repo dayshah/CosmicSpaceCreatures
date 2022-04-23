@@ -39,15 +39,6 @@ public class CharacterMovement : MonoBehaviour
         //jump = new Vector3(0.0f, 2.0f, 0.0f);
 	}
 
-    void OnCollisionStay(){
-        //isGrounded = true;
-    }
-
-    void OnCollisionExit()
-    {
-        //isGrounded = false;
-    }
-
         // Update is called once per frame
         void FixedUpdate ()
 	{
@@ -101,7 +92,21 @@ public class CharacterMovement : MonoBehaviour
         */
 	}
 
-    public virtual void UpdateTargetDirection()
+        private void OnCollisionStay(Collider c)
+        {
+            if (c.transform.tag == "platform")
+            {
+                GetComponent<Rigidbody2D>().isKinematic = true;
+                transform.parent = c.transform;
+            }
+        }
+
+        private void OnCollisionExit(Collider c)
+        {
+            
+        }
+
+        public virtual void UpdateTargetDirection()
     {
         if (!useCharacterForward)
         {
