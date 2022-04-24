@@ -22,6 +22,7 @@ public class CharacterMovement : MonoBehaviour
     private Quaternion freeRotation;
     private Camera mainCamera;
     private float velocity;
+    private Transform rootTransform;
 
     //test
     //public Vector3 jump;
@@ -36,6 +37,7 @@ public class CharacterMovement : MonoBehaviour
 	    anim = GetComponent<Animator>();
 	    mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
+        rootTransform = this.transform.Find("Root");
         //jump = new Vector3(0.0f, 2.0f, 0.0f);
 	}
 
@@ -80,6 +82,8 @@ public class CharacterMovement : MonoBehaviour
 
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(euler), turnSpeed * turnSpeedMultiplier * Time.deltaTime);
         }
+
+            SlopeLimit();
 
         /*
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -134,6 +138,57 @@ public class CharacterMovement : MonoBehaviour
             targetDirection = input.x * right + Mathf.Abs(input.y) * forward;
         }
     }
-}
+
+        public void SlopeLimit()
+        {
+            float maxAngle = 90;
+
+            RaycastHit hit;
+            RaycastHit hit2;
+            RaycastHit hit3;
+
+            Ray landingRay = new Ray(rootTransform.position, rootTransform.forward);
+            Ray landingRay2 = new Ray(rootTransform.position, Quaternion.AngleAxis(-90, Vector3.up) * rootTransform.forward);
+            Ray landingRay3 = new Ray(rootTransform.position, Quaternion.AngleAxis(90, Vector3.up) * rootTransform.forward);
+
+            bool isSlope = false;
+
+            if (Physics.Raycast(landingRay, out hit, 2f) && hit.transform.tag == "IceWorld")
+            {
+                float slopeAngle = Mathf.Abs(Vector3.Angle(rootTransform.forward, hit.normal));
+
+                Debug.Log(slopeAngle);
+
+                if (slopeAngle > maxAngle)
+                {
+                    isSlope = true;
+                }
+            } if (Physics.Raycast(landingRay2, out hit, 2f) && hit.transform.tag == "IceWorld")
+            {
+                float slopeAngle = Mathf.Abs(Vector3.Angle(rootTransform.forward, hit.normal));
+
+                if (slopeAngle > maxAngle)
+                {
+                    isSlope = true;
+                }
+            }
+            if (Physics.Raycast(landingRay3, out hit, 2f) && hit.transform.tag == "IceWorld")
+            {
+                float slopeAngle = Mathf.Abs(Vector3.Angle(rootTransform.forward, hit.normal));
+
+                if (slopeAngle > maxAngle)
+                {
+                    isSlope = true;
+                }
+            }
+
+            if (isSlope)
+            {
+                rb.AddForce(Vector3.down * 10000, ForceMode.Force);
+            }
+            
+
+        }
+    }
 
 }

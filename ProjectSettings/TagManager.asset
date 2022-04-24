@@ -7,6 +7,7 @@ TagManager:
   - Creature
   - FxTemporaire
   - platform
+  - IceWorld
   layers:
   - Default
   - TransparentFX
