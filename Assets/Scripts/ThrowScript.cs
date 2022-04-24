@@ -54,7 +54,7 @@ public class ThrowScript : MonoBehaviour
             }
         }
 
-        if (creaturesCaptured == 2)
+        if (creaturesCaptured == 4)
         {
             SceneManager.LoadScene("EndGame");
         }
