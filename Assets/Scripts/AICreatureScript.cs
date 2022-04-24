@@ -96,7 +96,7 @@ public class AICreatureScript : MonoBehaviour
 
     private void makeDecision(GameObject[] currRoute, int currRouteJunctionIdx)
     {
-        Debug.Log("Making Decision");
+        //Debug.Log("Making Decision");
 
         int nextWaypointIdx = currWaypoint + 1;
         if (nextWaypointIdx >= currRoute.Length)
