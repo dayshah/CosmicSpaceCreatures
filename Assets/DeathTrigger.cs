@@ -20,6 +20,10 @@ public class DeathTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.transform.position = RespawnPoint.position;
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.transform.position = RespawnPoint.position;
+        }
+        
     }
 }
