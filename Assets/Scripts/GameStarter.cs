@@ -25,6 +25,7 @@ public class GameStarter : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Prologue");
+        //SceneManager.LoadScene("AlphaLevel");
         Time.timeScale = 1f;
     }
 

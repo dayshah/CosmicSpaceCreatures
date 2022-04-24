@@ -92,6 +92,7 @@ public class CharacterMovement : MonoBehaviour
         */
 	}
 
+        /*
         private void OnCollisionStay(Collider c)
         {
             if (c.transform.tag == "platform")
@@ -105,6 +106,8 @@ public class CharacterMovement : MonoBehaviour
         {
             
         }
+
+        */
 
         public virtual void UpdateTargetDirection()
     {
