@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TimerLevel.unity
     guid: a21dfec0f752a6f448dd7bf75fdd7166
+  - enabled: 1
+    path: Assets/Scenes/FailScreen.unity
+    guid: 1ca4768eae78c2b4b898bab22043bddc
   m_configObjects: {}
