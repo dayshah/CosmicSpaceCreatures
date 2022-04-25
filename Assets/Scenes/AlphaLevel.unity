@@ -6775,7 +6775,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733110652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 335.8, y: 339.5, z: -1032.8}
+  m_LocalPosition: {x: 476, y: 186, z: -755.3}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 1037937380}
@@ -16799,7 +16799,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267338254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 788.7, y: 205.8, z: -694.8}
+  m_LocalPosition: {x: 274.9, y: 143.1, z: -614.5}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 468283926}
@@ -17853,7 +17853,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392771589}
-  m_LocalRotation: {x: 0.06932431, y: 0.0013073186, z: -0.00009084757, w: 0.99759334}
+  m_LocalRotation: {x: 0.06932431, y: 0.0013251574, z: -0.00009208721, w: 0.99759334}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -18125,7 +18125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406236052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 568.00226, y: 26.07, z: 28.5}
+  m_LocalPosition: {x: 568.00055, y: 26.07, z: 28.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1392771591}
@@ -19744,11 +19744,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 7a9f599c49797434485c0e1d9e99f200, type: 2}
     - target: {fileID: 95389170962898660, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'Hand_L'\n\tTransform 'Hips'\n\tTransform
-        'Elbow_L'\n\tTransform 'Spine_01'\n\tTransform 'Elbow_L'\n\tTransform 'Hand_L'\n\tTransform
-        'Shoulder_L'\n\tFrom animation clip 'throw'\n\tFrom animation clip 'throw'"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 137166910513705172, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
       propertyPath: m_Enabled
@@ -28825,8 +28821,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819508538}
-  m_LocalRotation: {x: 0.051167123, y: 0.001308757, z: -0.000067053195, w: 0.99868923}
-  m_LocalPosition: {x: 568.00226, y: 26.07, z: 28.5}
+  m_LocalRotation: {x: 0.05116712, y: 0.0013266127, z: -0.000067968074, w: 0.99868923}
+  m_LocalPosition: {x: 568.00055, y: 26.07, z: 28.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -29664,7 +29660,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877743637}
-  m_LocalRotation: {x: 0.051167127, y: 0.001308757, z: -0.00006705322, w: 0.99868923}
+  m_LocalRotation: {x: 0.05116712, y: 0.0013266129, z: -0.00006796805, w: 0.99868923}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -32470,7 +32466,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142051819}
-  m_LocalRotation: {x: 0.03304103, y: 0.0013097385, z: -0.000043298787, w: 0.9994531}
+  m_LocalRotation: {x: 0.033041023, y: 0.001327645, z: -0.000043890755, w: 0.9994531}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
